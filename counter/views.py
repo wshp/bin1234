@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Post
+# from .forms import PostForm
 
-# Create your views here.
+
+def post_delete(request, id):
+    post = Post.objects.get(id=id)
+    post.delete()
+    return redirect('/')
